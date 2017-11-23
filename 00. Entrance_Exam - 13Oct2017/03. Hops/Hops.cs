@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -7,7 +7,6 @@ class Hops
     static void Main(string[] args)
     {
         //Hops by IovoslavIovchev
-        //Gives only 95/100 points!!!
         int[] carrots = Console.ReadLine()
             .Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
             .Select(int.Parse)
@@ -16,7 +15,7 @@ class Hops
         short m = short.Parse(Console.ReadLine()); int max = int.MinValue; //directions to try
         for (short i = 0; i < m; i++)
         {
-            List<int> visited = new List<int>();
+            HashSet<int> visited = new HashSet<int>();
             int[] directions = Console.ReadLine()
                 .Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
                 .Select(int.Parse)
@@ -43,4 +42,3 @@ class Hops
         Console.WriteLine(max);
     }
 }
-
