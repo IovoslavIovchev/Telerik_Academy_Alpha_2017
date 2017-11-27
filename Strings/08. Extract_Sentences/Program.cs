@@ -12,9 +12,7 @@ namespace Extract_Sentences
         {
             string word = Console.ReadLine();
             string[] sentences = Console.ReadLine().Split('.').Select(x => x.Trim()).ToArray();
-
-            Stopwatch sw = new Stopwatch();
-            sw.Start();
+            
             List<char> separators = new List<char>();
             foreach(var sentence in sentences)
             {
