@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/15. Replace_Tag.csproj"
+                "${workspaceFolder}/01. Say_Hello.csproj"
             ],
             "problemMatcher": "$msCompile"
         }
