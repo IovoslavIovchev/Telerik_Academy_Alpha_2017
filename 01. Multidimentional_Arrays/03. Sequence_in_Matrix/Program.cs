@@ -5,85 +5,110 @@ namespace Sequence_in_Matrix
 {
     class Program
     {
+        static int max = 1;
+        
         static void Main(string[] args)
         {
             int[] size = Console.ReadLine()
                 .Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)
                 .Select(int.Parse)
                 .ToArray();
-            int x = size[0], y = size[1];
 
-            string[,] matrix = new string[x, y];
+            int N = size[0], M = size[1];
 
-            for (int i = 0; i < x; i++)
+            int[,] m = new int[N, M];
+
+            for (int i = 0; i < N; i++)
             {
-                string[] temp = Console.ReadLine().Split(' ');
-                for (int j = 0; j < y; j++)
-                {
-                    matrix[i, j] = temp[j];
-                }
+                int[] temp = Console.ReadLine()
+                    .Split()
+                    .Select(int.Parse)
+                    .ToArray();
+
+                for (int j = 0; j < M; j++)
+                    m[i, j] = temp[j];
             }
 
-            int max = int.MinValue;
+            Horizontal(m, N, M);
+            Vertical(m, N, M);
+            DiagonalRight(m, N, M);
+            DiagonalLeft(m, N, M);
 
-            for (int i = 0; i < x; i++)
+            Console.WriteLine(max);
+        }
+
+        static void Vertical(int[,] m, int N, int M)
+        {
+            for (int i = 0; i < N; i++)
             {
                 int temp = 1;
-                string cur = matrix[i, 0];
-
-                for (int j = 1; j < y; j++)
+                for (int j = 0; j < M - 1; j++)
                 {
-                    if (matrix[i, j].Equals(cur))
+                    if (m[i, j] == m[i, j + 1])
                         temp++;
                     else
                     {
-                        if (max < temp)
-                            max = temp;
-                        cur = matrix[i, j];
+                        max = Math.Max(max, temp);
                         temp = 1;
-                    }
+                    }                    
                 }
-                if (max < temp)
-                    max = temp;
             }
+        }
 
-            for (int j = 0; j < y; j++)
+        static void Horizontal(int[,] m, int N, int M)
+        {
+            for (int j = 0; j < M; j++)
             {
                 int temp = 1;
-                string cur = matrix[0, j];
-
-                for (int i = 1; i < x; i++)
+                for (int i = 0; i < N - 1; i++)
                 {
-                    if (matrix[i, j].Equals(cur))
+                    if (m[i, j] == m[i + 1, j])
                         temp++;
                     else
-                    {
-                        if (max < temp)
-                            max = temp;
-                        cur = matrix[i, j];
                         temp = 1;
+                    
+                    max = Math.Max(max, temp);
+                }
+            }
+        }
+        
+        static void DiagonalRight(int[,] m, int N, int M)
+        {
+            for (int i = 0; i < N - 1; i++)
+            {
+                for (int j = 0; j < M - 1; j++)
+                {
+                    int temp = 1;
+                    for (int r = i, c = j; r < N - 1 && c < M - 1; r++, c++)
+                    {
+                        if (m[r, c] == m[r + 1, c + 1])
+                            temp++;
+                        else
+                            temp = 1;
+
+                        max = Math.Max(max, temp);
                     }
                 }
-                if (max < temp)
-                    max = temp;
             }
-
-            for (int i = 0, j = 0; i < x || j < y;)
+        }
+        
+        static void DiagonalLeft(int[,] m, int N, int M)
+        {
+            for (int i = 0; i < N - 1; i++)
             {
                 int temp = 1;
-                string cur = matrix[i, j];
-                                
-                for (int f = i+1, h = j+1; f < x || h < y;)
+                for (int j = M - 1; j >= 1; j--)
                 {
-                    if (matrix[f++, h++].Equals(cur))
-                        temp++;
-                    else
+                    for (int r = i, c = j; r < N - 1 && c > 0; r++, c--)
                     {
-                        cur = matrix[f++, h++];
-                        temp = 1;
+                        if (m[r, c] == m[r + 1, c - 1])
+                            temp++;
+                        else
+                            temp = 1;
+
+                        max = Math.Max(max, temp);
                     }
-                }
-                j++;
+                }                
             }
         }
     }
