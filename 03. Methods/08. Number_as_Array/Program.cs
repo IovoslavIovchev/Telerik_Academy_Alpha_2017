@@ -1,53 +1,43 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
-
-namespace Number_as_Array
+using System.Text;
+using System.Numerics;
+ 
+namespace Sum_Big_Numbers
 {
     class Program
     {
         static void Main(string[] args)
         {
-            int max = Console.ReadLine()
-                .Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)
-                .Select(int.Parse)
-                .ToArray().Max();
-
-            int[] first = Console.ReadLine()
-                .Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)
-                .Select(int.Parse)
-                .ToArray();
-            int[] second = Console.ReadLine()
-                .Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)
-                .Select(int.Parse)
-                .ToArray();
-            int[] result = new int[max + 1];
+            string nums = Console.ReadLine();
+            string f = string.Join("", Console.ReadLine().Split().ToArray());
+            string s = string.Join("", Console.ReadLine().Split().ToArray());
             
-            AddToArray(result, first);
-            AddToArray(result, second);
+            int max = Math.Max(f.Length, s.Length);
 
-            if (result[result.Length-1] == 0)
-                Console.WriteLine(string.Join(" ", result.Take(result.Length - 1)));
-            else
-                Console.WriteLine(string.Join(" ", result));
-        }
+            f = f.PadRight(max, '0');
+            s = s.PadRight(max, '0');
 
-        static void AddToArray(int[] result, int[] array)
+            Console.WriteLine(SumArrays(f, s, max));
+        } 
+
+        static string SumArrays(string f, string s, int max)
         {
-            int rem = 0;
-            for (int i = 0; i < array.Length; i++)
-            {                
-                result[i] += array[i] + rem;
+            StringBuilder result = new StringBuilder();
 
-                if (result[i] >= 10)
-                {
-                    rem = 1;
-                    result[i] -= 10;
-                }            
-                else
-                    rem = 0;
+            int rem = 0;
+            int num = 0;
+
+            for (int i = 0; i < max; i++)
+            {
+                int temp = f[i] + s[i] - 96 + rem;
+                rem = temp / 10;
+                num = temp % 10;
+                result.Append(num.ToString()+ " ");
             }
 
-            result[result.Length - 1] += rem;
+            return result.ToString().Trim();
         }
     }
 }
