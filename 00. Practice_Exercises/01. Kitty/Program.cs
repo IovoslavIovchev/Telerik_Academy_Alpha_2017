@@ -6,9 +6,10 @@ namespace Kitty
 {
     class Program
     {
-        static Dictionary<char, int> inventory = new Dictionary<char, int>() {{'@', 0}, {'*', 0}, {'x', 0}};
         static void Main(string[] args)
         {
+            Dictionary<char, int> inventory = new Dictionary<char, int>() {{'@', 0}, {'*', 0}, {'x', 0}};
+            
             char[] field = Console.ReadLine().ToCharArray();
             int[] movement = Console.ReadLine()
                 .Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)

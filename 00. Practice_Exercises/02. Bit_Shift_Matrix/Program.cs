@@ -8,15 +8,13 @@ namespace Bit_Shift_Matrix
     {
         static BigInteger sum = 0;
         static BigInteger[,] m;
-        static bool[,] visited;
         static int X, Y;
         static void Main(string[] args)
         {
             ushort a = ushort.Parse(Console.ReadLine()), 
-                   b =  ushort.Parse(Console.ReadLine()), COEFF = Math.Max(a, b);
+                   b = ushort.Parse(Console.ReadLine()), COEFF = Math.Max(a, b);
 
             m = new BigInteger[a,b];
-            visited = new bool[a, b];
 
             for (int i = a - 1; i >= 0; i--)
             {
@@ -47,8 +45,7 @@ namespace Bit_Shift_Matrix
 
             for (int j = start; j <= end; j++)
             {
-                if (!visited[X, j])
-                { sum += m[X, j]; visited[X, j] = true; }
+                sum += m[X, j]; m[X, j] = 0;
             }
             if (c == end) Y = end;
             else Y = start;
@@ -56,8 +53,7 @@ namespace Bit_Shift_Matrix
             start = Math.Min(r, X); end = Math.Max(r, X);
             for (int j = start; j <= end; j++)
             {
-                if (!visited[j, Y])
-                { sum += m[j, Y]; visited[j, Y] = true; }
+                sum += m[j, Y]; m[j, Y] = 0;
             }
             if (r == end) X = end;
             else X = start;
