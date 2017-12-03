@@ -10,7 +10,6 @@ namespace Sneaky_the_Snake
         static int L = 3;
         static void Main(string[] args)
         {
-            //80 out of 100 points only 
             char[,] den = InitializeMatrix();
             int r = den.GetLength(0), c = den.GetLength(1);
 
@@ -20,6 +19,8 @@ namespace Sneaky_the_Snake
 
             for (int i = 0; i < directions.Length; i++)
             {
+                Move(directions[i]);
+
                 if ((i + 1) % 5 == 0)
                     L--;
 
@@ -28,8 +29,6 @@ namespace Sneaky_the_Snake
                     Console.WriteLine("Sneaky is going to starve at [{0},{1}]", x, y);
                     return;
                 }
-
-                Move(directions[i]);
 
                 if (x >= r) //LOST IN DEPTHS
                 {
@@ -45,7 +44,8 @@ namespace Sneaky_the_Snake
                     case '@': 
                         L++; den[x, y] = '-'; 
                         break;
-                    case '%': Console.WriteLine("Sneaky is going to hit a rock at [{0},{1}]", x, y);
+                    case '%': //HITS A ROCK
+                        Console.WriteLine("Sneaky is going to hit a rock at [{0},{1}]", x, y);
                         return;         
                     case 'e':
                         Console.WriteLine("Sneaky is going to get out with length {0}", L);
