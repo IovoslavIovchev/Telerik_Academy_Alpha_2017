@@ -5,77 +5,91 @@ namespace Sneaky_the_Snake
 {
     class Program
     {
+        static int x = 0;
+        static int y = 0;
+        static int L = 3;
         static void Main(string[] args)
         {
-            //70 out of 100
-            int[] dimensions = Console.ReadLine()
-                .Split(new char[] { 'x' }, StringSplitOptions.RemoveEmptyEntries)
-                .Select(int.Parse)
-                .ToArray();
-            int r = dimensions[0], c = dimensions[1];
-            char[,] den = new char[r, c];
+            //80 out of 100 points only 
+            char[,] den = InitializeMatrix();
+            int r = den.GetLength(0), c = den.GetLength(1);
 
-            long length = 3; bool inside = true; int x = 0, y = 0; //coordinates - x & y
-
-            for (int i = 0; i < r; i++)
-            {
-                string temp = Console.ReadLine();
-                for (int j = 0; j < temp.Length; j++)
-                {
-                    den[i, j] = temp[j];                
-                    if (temp[j].Equals('e')) y = j;
-                }
-            }
+            FillMatrix(den, r, c);
 
             char[] directions = Console.ReadLine().Split(',').Select(char.Parse).ToArray();
 
             for (int i = 0; i < directions.Length; i++)
             {
-                if ((i+1) % 5 == 0)
-                {
-                    length--;
-                    if (length <= 0)
-                    {
-                        Console.WriteLine("Sneaky is going to starve at [{0},{1}]", x, y);
-                        return;
-                    }
-                }
+                if ((i + 1) % 5 == 0)
+                    L--;
 
-                switch (directions[i])
+                if (L <= 0) //STARVES
                 {
-                    case 'w': x--;
-                        break;
-                    case 'a': y--;
-                        break;
-                    case 's': x++;
-                        break;
-                    case 'd': y++;
-                        break;
-                }
-
-                if (y < 0) y = (c + y) % c;
-                if (y >= c) y = y % c;     
-                if (x >= r)
-                {
-                    Console.WriteLine("Sneaky is going to be lost into the depths with length {0}", length);
+                    Console.WriteLine("Sneaky is going to starve at [{0},{1}]", x, y);
                     return;
-                }           
+                }
+
+                Move(directions[i]);
+
+                if (x >= r) //LOST IN DEPTHS
+                {
+                    Console.WriteLine("Sneaky is going to be lost into the depths with length {0}", L);
+                    return;
+                }
+
+                if (y < 0) y = c - 1;
+                if (y >= c) y = 0; 
                 
                 switch (den[x, y])
                 {
-                    case '@': length++; den[x,y] = '-'; break;
-                    case '%': Console.WriteLine("Sneaky is going to hit a rock at [{0},{1}]", x, y); return;
-                    case 'e': inside = !inside; break;
+                    case '@': 
+                        L++; den[x, y] = '-'; 
+                        break;
+                    case '%': Console.WriteLine("Sneaky is going to hit a rock at [{0},{1}]", x, y);
+                        return;         
+                    case 'e':
+                        Console.WriteLine("Sneaky is going to get out with length {0}", L);
+                        return;    
+                    default: break;
                 }
             }
 
-            if (inside)
-            {
-                Console.WriteLine("Sneaky is going to be stuck in the den at [{0},{1}]", x, y);
-                return;
-            }
+            Console.WriteLine("Sneaky is going to be stuck in the den at [{0},{1}]", x, y);
+        }
 
-            Console.WriteLine("Sneaky is going to get out with length {0}", length);
+        static char[,] InitializeMatrix()
+        {
+            int[] dimensions = Console.ReadLine()
+                .Split(new char[] { 'x' }, StringSplitOptions.RemoveEmptyEntries)
+                .Select(int.Parse)
+                .ToArray();
+
+            return new char[dimensions[0], dimensions[1]];
+        }
+
+        static void FillMatrix(char[,] m, int r, int c)
+        {
+            for (int i = 0; i < r; i++)
+            {
+                string temp = Console.ReadLine();
+                for (int j = 0; j < c; j++)
+                {
+                    m[i, j] = temp[j];
+                    if (temp[j].Equals('e') && x == 0) y = j;
+                }
+            }
+        }
+
+        static void Move(char d)
+        {
+            switch (d)
+            {
+                case 'w': x--; break;
+                case 'a': y--; break;
+                case 's': x++; break;
+                case 'd': y++; break;                    
+                default: break;
+            }
         }
     }
 }
