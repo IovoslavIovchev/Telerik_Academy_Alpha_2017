@@ -13,11 +13,11 @@ namespace Classes_Part_1
 
         private BatteryType batteryType { get; set; }     
 
-        public static string Type (BatteryType type)
+        public static string Description (BatteryType type)
         {
             var memInfo = typeof(BatteryType).GetMember(type.ToString());
             var attributes = memInfo[0].GetCustomAttributes(typeof(DescriptionAttribute), false);
-            var description = ((DescriptionAttribute)attributes[0]).Description;
+            string description = ((DescriptionAttribute)attributes[0]).Description;
 
             return description;
         }
@@ -27,7 +27,7 @@ namespace Classes_Part_1
             this.batteryType = BatteryType.Default;
         }
 
-        public Battery(string model, uint hoursIdle, uint hoursTalk, uint batteryType)
+        public Battery(string model, uint hoursIdle, uint hoursTalk, int batteryType)
         {
             this.model = model;
 
@@ -36,6 +36,22 @@ namespace Classes_Part_1
             this.hoursTalk = hoursTalk;
 
             this.batteryType = (BatteryType)batteryType;
+        }
+
+        public BatteryType Type
+        {
+            get
+            {
+                return this.batteryType;
+            }
+            set
+            {
+                if ((int)value > 3)
+                {
+                    throw new ArgumentException("Invalid Battery Type (Must be less or equal to 3)");
+                }
+                this.batteryType = (BatteryType)value;
+            }
         }
 
         public string Model
@@ -77,7 +93,7 @@ namespace Classes_Part_1
 
     public enum BatteryType
     {
-        [Description("Li-Ion")]
+        [Description("[unspecified]")]
         Default,
 
         [Description("Li-Ion")]

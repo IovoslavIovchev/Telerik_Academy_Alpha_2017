@@ -10,24 +10,22 @@ namespace Classes_Part_1
 
         private decimal price = 0.00M;
 
-        private string owner = null;
+        private string owner = "[none]";
 
         private Battery batteryCharacteristics = new Battery();
 
-        private BatteryType batteryType = BatteryType.Default;
-
         private Display displayCharacteristics = new Display();
 
-        public GSM (string model, string manufacturer) //MANDATORY ATTRIBUTES
+        public GSM (string model, string manufacturer) //MANDATORY
         {
             this.model = model;
 
             this.manufacturer = manufacturer;
         }
 
-        public GSM (string model, string manufacturer, decimal price, string owner, uint batteryType,
+        public GSM (string model, string manufacturer, decimal price, string owner, int batteryType,
                     string batteryModel, uint batteryHoursIdle, uint batteryHoursTalk,
-                    double displaySize, uint displayNumberOfColours) //OPTIONAL ATTRIBUTES
+                    double displaySize, uint displayNumberOfColours) //OPTIONAL
         {
             this.model = model;
 
@@ -37,18 +35,26 @@ namespace Classes_Part_1
 
             this.owner = owner;
 
-            this.batteryType = (BatteryType)batteryType;
-            
-            this.batteryCharacteristics.Model = batteryModel;
+            this.batteryCharacteristics = new Battery(batteryModel, batteryHoursIdle, batteryHoursTalk, batteryType);
 
-            this.batteryCharacteristics.HoursIdle = batteryHoursIdle;
-
-            this.batteryCharacteristics.HoursTalk = batteryHoursTalk;
-
-            this.displayCharacteristics.Size = displaySize;
-
-            this.displayCharacteristics.NumberOfColours = displayNumberOfColours;
+            this.displayCharacteristics = new Display(displaySize, displayNumberOfColours);
         }
+
+        public GSM (string model, string manufacturer, decimal price, 
+                    string owner, Battery battery, Display display) //OPTIONAL
+        {
+            this.model = model;
+
+            this.manufacturer = manufacturer;
+
+            this.price = price;
+
+            this.owner = owner;
+
+            this.batteryCharacteristics = battery;
+
+            this.displayCharacteristics = display;
+        }       
 
         public string Model
         {
@@ -104,6 +110,14 @@ namespace Classes_Part_1
             set 
             {
                 this.batteryCharacteristics = value;
+            }
+        }
+
+        public string BatteryType
+        {
+            get
+            {
+                return Battery.Description(this.Battery.Type);
             }
         }
 
