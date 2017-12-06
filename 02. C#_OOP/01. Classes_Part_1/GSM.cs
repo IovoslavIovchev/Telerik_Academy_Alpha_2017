@@ -4,9 +4,9 @@ namespace Classes_Part_1
 
     public class GSM
     {
-        private string model { get; set; }
+        private string model { get; } //MANDATORY
 
-        private string manufacturer { get; set; }
+        private string manufacturer { get; } //MANDATORY
 
         private decimal price = 0.00M;
 
@@ -14,24 +14,20 @@ namespace Classes_Part_1
 
         private Battery batteryCharacteristics = new Battery();
 
+        private BatteryType batteryType = BatteryType.Default;
+
         private Display displayCharacteristics = new Display();
 
-
-        public GSM ()
-        {
-
-        }
-
-        public GSM (string model, string manufacturer)
+        public GSM (string model, string manufacturer) //MANDATORY ATTRIBUTES
         {
             this.model = model;
 
             this.manufacturer = manufacturer;
         }
 
-        public GSM (string model, string manufacturer, decimal price, string owner,
+        public GSM (string model, string manufacturer, decimal price, string owner, uint batteryType,
                     string batteryModel, uint batteryHoursIdle, uint batteryHoursTalk,
-                    double displaySize, uint displayNumberOfColours)
+                    double displaySize, uint displayNumberOfColours) //OPTIONAL ATTRIBUTES
         {
             this.model = model;
 
@@ -40,6 +36,8 @@ namespace Classes_Part_1
             this.price = price;
 
             this.owner = owner;
+
+            this.batteryType = (BatteryType)batteryType;
             
             this.batteryCharacteristics.Model = batteryModel;
 
@@ -58,15 +56,6 @@ namespace Classes_Part_1
             {
                 return this.model;
             }
-            set
-            {
-                if (value.Length < 3)
-                {
-                    throw new ArgumentException("Invalid GSM Model");
-                }
-
-                this.model = value;
-            }
         }
 
         public string Manufacturer 
@@ -74,10 +63,6 @@ namespace Classes_Part_1
             get
             {
                 return this.manufacturer;
-            }
-            set
-            {
-                this.manufacturer = value;
             }
         }
 

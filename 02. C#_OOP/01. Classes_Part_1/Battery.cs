@@ -1,6 +1,7 @@
 namespace Classes_Part_1
 {
     using System;
+    using System.ComponentModel;
 
     public class Battery
     {
@@ -8,20 +9,33 @@ namespace Classes_Part_1
 
         private uint hoursIdle { get; set; }
         
-        private uint hoursTalk { get; set; }
+        private uint hoursTalk { get; set; }   
+
+        private BatteryType batteryType { get; set; }     
+
+        public static string Type (BatteryType type)
+        {
+            var memInfo = typeof(BatteryType).GetMember(type.ToString());
+            var attributes = memInfo[0].GetCustomAttributes(typeof(DescriptionAttribute), false);
+            var description = ((DescriptionAttribute)attributes[0]).Description;
+
+            return description;
+        }
 
         public Battery()
         {
-
+            this.batteryType = BatteryType.Default;
         }
 
-        public Battery(string model, uint hoursIdle, uint hoursTalk)
+        public Battery(string model, uint hoursIdle, uint hoursTalk, uint batteryType)
         {
             this.model = model;
 
             this.hoursIdle = hoursIdle;
 
             this.hoursTalk = hoursTalk;
+
+            this.batteryType = (BatteryType)batteryType;
         }
 
         public string Model
@@ -59,5 +73,20 @@ namespace Classes_Part_1
                 this.hoursTalk = value;
             }
         }
+    }
+
+    public enum BatteryType
+    {
+        [Description("Li-Ion")]
+        Default,
+
+        [Description("Li-Ion")]
+        LiIon,    
+
+        [Description("NiMH")]
+        NiMH,
+
+        [Description("NiCd")]
+        NiCd
     }
 }
