@@ -25,6 +25,12 @@ namespace Classes_Part_1
         public Battery()
         {
             this.batteryType = BatteryType.Default;
+
+            this.model = "[unspecified]";
+
+            this.hoursIdle = 0;
+
+            this.hoursTalk = 0;
         }
 
         public Battery(string model, uint hoursIdle, uint hoursTalk, int batteryType)

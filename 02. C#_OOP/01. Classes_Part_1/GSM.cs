@@ -202,5 +202,15 @@ namespace Classes_Part_1
                 this.displayCharacteristics.NumberOfColours = value;
             }
         }
+
+        public override string ToString()
+        {
+            string specs = $"{owner}'s {manufacturer} {model}:" + Environment.NewLine 
+                        + $"Starting at: {price}$" + Environment.NewLine 
+                        + $"Display: {displayCharacteristics.Size}-inch display with {displayCharacteristics.NumberOfColours} colours" + Environment.NewLine
+                        + $"A {batteryCharacteristics.Type} battery: {batteryCharacteristics.HoursIdle} hours idle & {batteryCharacteristics.HoursTalk} hours talk";
+
+            return specs;
+        }
     }
 }

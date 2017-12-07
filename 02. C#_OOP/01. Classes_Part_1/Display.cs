@@ -10,7 +10,9 @@ namespace Classes_Part_1
 
         public Display()
         {
+            this.size = 0.00;
 
+            this.numberOfColours = 0;
         }
 
         public Display(double size, uint numberOfColours)

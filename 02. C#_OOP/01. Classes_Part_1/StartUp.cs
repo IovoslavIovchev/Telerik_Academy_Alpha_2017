@@ -9,15 +9,7 @@
         {
             var a = new GSM("Galaxy", "Samsung");
 
-            Console.WriteLine(a.Model);
-            Console.WriteLine(a.Manufacturer);
-            Console.WriteLine(a.Price);
-            Console.WriteLine(a.Owner);
-            Console.WriteLine(a.BatteryHoursIdle);
-            Console.WriteLine(a.BatteryHoursTalk);
-            Console.WriteLine(a.DisplaySize);
-            Console.WriteLine(a.DisplayNumberOfColours);
-            Console.WriteLine(a.BatteryType.ToString());
+            Console.WriteLine(a.ToString());
         }
     }
 }
