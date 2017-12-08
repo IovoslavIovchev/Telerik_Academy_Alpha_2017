@@ -10,11 +10,19 @@ namespace Classes_Part_1
 
         private decimal price = 0.00M;
 
+        private uint cores = 0;
+
+        private double ram = 0;
+
+        private double storage = 0;
+
         private string owner = "[none]";
 
         private Battery batteryCharacteristics = new Battery();
 
         private Display displayCharacteristics = new Display();
+
+        private static GSM iPhone4s = new GSM("iPhone 4S", "Apple", 199.99M, "Steve", 2, 1, 16, 1, "Non-Removable", 70, 16, 3.5, 16000000);
 
         public GSM (string model, string manufacturer) //MANDATORY
         {
@@ -23,8 +31,8 @@ namespace Classes_Part_1
             this.manufacturer = manufacturer;
         }
 
-        public GSM (string model, string manufacturer, decimal price, string owner, int batteryType,
-                    string batteryModel, uint batteryHoursIdle, uint batteryHoursTalk,
+        public GSM (string model, string manufacturer, decimal price, string owner, uint cores, double ram, double storage,
+                    int batteryType, string batteryModel, uint batteryHoursIdle, uint batteryHoursTalk,
                     double displaySize, uint displayNumberOfColours) //OPTIONAL
         {
             this.model = model;
@@ -34,6 +42,12 @@ namespace Classes_Part_1
             this.price = price;
 
             this.owner = owner;
+
+            this.cores = cores;
+
+            this.ram = ram;
+
+            this.storage = storage;
 
             this.batteryCharacteristics = new Battery(batteryModel, batteryHoursIdle, batteryHoursTalk, batteryType);
 
@@ -112,6 +126,42 @@ namespace Classes_Part_1
                 this.batteryCharacteristics = value;
             }
         }
+
+        public uint Cores
+        {
+            get
+            {
+                return this.cores;
+            }
+            set
+            {
+                this.cores = value;
+            }
+        }
+
+        public double RAM
+        {
+            get
+            {
+                return this.ram;
+            }
+            set
+            {
+                this.ram = value;
+            }
+        }
+
+        public double Storage
+        {
+            get
+            {
+                return this.storage;
+            }
+            set
+            {
+                this.storage = value;
+            }
+        }        
 
         public string BatteryType
         {
@@ -206,11 +256,20 @@ namespace Classes_Part_1
         public override string ToString()
         {
             string specs = $"{owner}'s {manufacturer} {model}:" + Environment.NewLine 
-                        + $"Starting at: {price}$" + Environment.NewLine 
-                        + $"Display: {displayCharacteristics.Size}-inch display with {displayCharacteristics.NumberOfColours} colours" + Environment.NewLine
-                        + $"A {batteryCharacteristics.Type} battery: {batteryCharacteristics.HoursIdle} hours idle & {batteryCharacteristics.HoursTalk} hours talk";
+                        + $" - Starting at: {price:F2}$" + Environment.NewLine 
+                        + $" - {cores}-core CPU | {ram:F1}GB RAM | {storage}GB Internal Storage" + Environment.NewLine
+                        + $" - Display: {displayCharacteristics.Size}-inch | {displayCharacteristics.NumberOfColours} colours" + Environment.NewLine
+                        + $" - {batteryCharacteristics.Type} battery: {batteryCharacteristics.HoursIdle} hours Idle | {batteryCharacteristics.HoursTalk} hours Talk";
 
             return specs;
+        }
+
+        public static GSM iPhone4S
+        {
+            get
+            {
+                return iPhone4s;
+            }
         }
     }
 }

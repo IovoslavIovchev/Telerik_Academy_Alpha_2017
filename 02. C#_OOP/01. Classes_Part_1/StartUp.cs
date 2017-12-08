@@ -7,7 +7,7 @@
     {
         static void Main(string[] args)
         {
-            var a = new GSM("Galaxy", "Samsung");
+            var a = GSM.iPhone4S;
 
             Console.WriteLine(a.ToString());
         }

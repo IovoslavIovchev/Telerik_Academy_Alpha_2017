@@ -8,7 +8,7 @@ namespace Classes_Part_1
 
         private uint numberOfColours { get; set; }
 
-        public Display()
+        public Display() //[unspecified]
         {
             this.size = 0.00;
 

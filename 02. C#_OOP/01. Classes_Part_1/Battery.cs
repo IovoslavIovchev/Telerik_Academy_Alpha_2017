@@ -22,7 +22,7 @@ namespace Classes_Part_1
             return description;
         }
 
-        public Battery()
+        public Battery() //[unspecified]
         {
             this.batteryType = BatteryType.Default;
 
@@ -52,7 +52,7 @@ namespace Classes_Part_1
             }
             set
             {
-                if ((int)value > 3)
+                if ((int)value > 3 || (int)value < 0)
                 {
                     throw new ArgumentException("Invalid Battery Type (Must be less or equal to 3)");
                 }
