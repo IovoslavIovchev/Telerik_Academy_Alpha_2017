@@ -1,4 +1,4 @@
-namespace Classes_Part_1
+﻿namespace Classes_Part_1
 {
     using System;
 
@@ -56,7 +56,7 @@ namespace Classes_Part_1
                 {
                     throw new ArgumentException("Invalid Display Size");
                 }
-                
+
                 this.numberOfColours = value;
             }
         }

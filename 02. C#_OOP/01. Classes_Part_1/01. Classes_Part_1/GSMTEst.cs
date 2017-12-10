@@ -1,4 +1,4 @@
-namespace Classes_Part_1
+﻿namespace Classes_Part_1
 {
     using System;
 
@@ -8,17 +8,16 @@ namespace Classes_Part_1
 
         private static GSM MotoZ = new GSM("Z", "Moto", 670.00M, "Dave", 8, 4, 32, 1, "Turbo-Charging", 60, 15, 5.5, 16000000);
 
+
         private static GSM iPhoneX = new GSM("iPhone X", "Apple", 999.99M, "Steve", 6, 3, 64, 1, "Non-Removable", 90, 21, 5.8, 16000000);
 
-        private static GSM[] testArray = new GSM[] {GalaxyA5, MotoZ, iPhoneX};
+        private static GSM[] testArray = new GSM[] { GalaxyA5, MotoZ, iPhoneX };
 
-        public static void GSMArray (int index)
+        public static void GSMArray(int N)
         {
-            if (index < 0 || index >= testArray.Length)
-            {
-                throw new ArgumentException("Invalid Index");
-            }
-            Console.WriteLine(testArray[index].ToString());            
+            Console.WriteLine(testArray[N].ToString());
+
+            Console.WriteLine(GSM.iPhone4S.ToString());
         }
     }
 }

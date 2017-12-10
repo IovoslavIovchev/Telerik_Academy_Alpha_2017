@@ -1,4 +1,4 @@
-namespace Classes_Part_1
+﻿namespace Classes_Part_1
 {
     using System;
     using System.ComponentModel;
@@ -8,12 +8,12 @@ namespace Classes_Part_1
         private string model { get; set; }
 
         private uint hoursIdle { get; set; }
-        
-        private uint hoursTalk { get; set; }   
 
-        private BatteryType batteryType { get; set; }     
+        private uint hoursTalk { get; set; }
 
-        public static string Description (BatteryType type)
+        private BatteryType batteryType { get; set; }
+
+        public static string Description(BatteryType type)
         {
             var memInfo = typeof(BatteryType).GetMember(type.ToString());
             var attributes = memInfo[0].GetCustomAttributes(typeof(DescriptionAttribute), false);
@@ -103,7 +103,7 @@ namespace Classes_Part_1
         Default,
 
         [Description("Li-Ion")]
-        LiIon,    
+        LiIon,
 
         [Description("NiMH")]
         NiMH,

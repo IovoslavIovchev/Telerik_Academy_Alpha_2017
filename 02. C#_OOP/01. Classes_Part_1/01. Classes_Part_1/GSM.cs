@@ -1,6 +1,8 @@
-namespace Classes_Part_1
+﻿namespace Classes_Part_1
 {
     using System;
+    using System.Collections.Generic;
+    using Bytes2you.Validation;
 
     public class GSM
     {
@@ -24,14 +26,16 @@ namespace Classes_Part_1
 
         private static GSM iPhone4s = new GSM("iPhone 4S", "Apple", 199.99M, "Steve", 2, 1, 16, 1, "Non-Removable", 70, 16, 3.5, 16000000);
 
-        public GSM (string model, string manufacturer) //MANDATORY
+        private List<Call> callHistory = new List<Call>();
+
+        public GSM(string model, string manufacturer) //MANDATORY
         {
             this.model = model;
 
             this.manufacturer = manufacturer;
         }
 
-        public GSM (string model, string manufacturer, decimal price, string owner, uint cores, double ram, double storage,
+        public GSM(string model, string manufacturer, decimal price, string owner, uint cores, double ram, double storage,
                     int batteryType, string batteryModel, uint batteryHoursIdle, uint batteryHoursTalk,
                     double displaySize, uint displayNumberOfColours) //OPTIONAL
         {
@@ -54,7 +58,7 @@ namespace Classes_Part_1
             this.displayCharacteristics = new Display(displaySize, displayNumberOfColours);
         }
 
-        public GSM (string model, string manufacturer, decimal price, 
+        public GSM(string model, string manufacturer, decimal price,
                     string owner, Battery battery, Display display) //OPTIONAL
         {
             this.model = model;
@@ -68,7 +72,7 @@ namespace Classes_Part_1
             this.batteryCharacteristics = battery;
 
             this.displayCharacteristics = display;
-        }       
+        }
 
         public string Model
         {
@@ -78,7 +82,7 @@ namespace Classes_Part_1
             }
         }
 
-        public string Manufacturer 
+        public string Manufacturer
         {
             get
             {
@@ -103,7 +107,7 @@ namespace Classes_Part_1
             }
         }
 
-        public string Owner 
+        public string Owner
         {
             get
             {
@@ -115,13 +119,13 @@ namespace Classes_Part_1
             }
         }
 
-        public Battery Battery 
+        public Battery Battery
         {
             get
             {
                 return this.batteryCharacteristics;
             }
-            set 
+            set
             {
                 this.batteryCharacteristics = value;
             }
@@ -161,7 +165,7 @@ namespace Classes_Part_1
             {
                 this.storage = value;
             }
-        }        
+        }
 
         public string BatteryType
         {
@@ -248,15 +252,15 @@ namespace Classes_Part_1
                 {
                     throw new ArgumentException("Invalid Display Size");
                 }
-                
+
                 this.displayCharacteristics.NumberOfColours = value;
             }
         }
 
         public override string ToString()
         {
-            string specs = $"{owner}'s {manufacturer} {model}:" + Environment.NewLine 
-                        + $" - Starting at: {price:F2}$" + Environment.NewLine 
+            string specs = $"{owner}'s {manufacturer} {model}:" + Environment.NewLine
+                        + $" - Starting at: {price:F2}$" + Environment.NewLine
                         + $" - {cores}-core CPU | {ram:F1}GB RAM | {storage}GB Internal Storage" + Environment.NewLine
                         + $" - Display: {displayCharacteristics.Size}-inch | {displayCharacteristics.NumberOfColours} colours" + Environment.NewLine
                         + $" - {batteryCharacteristics.Type} battery: {batteryCharacteristics.HoursIdle} hours Idle | {batteryCharacteristics.HoursTalk} hours Talk";
@@ -270,6 +274,42 @@ namespace Classes_Part_1
             {
                 return iPhone4s;
             }
+        }
+
+        public List<Call> CallHistory
+        {
+            get
+            {
+                return this.callHistory;
+            }
+        }
+
+        public void ClearCallHistory()
+        {
+            this.callHistory = new List<Call>() { };
+        }
+
+        public void AddCall(string dialedNum, uint duration, string date, string time)
+        {
+            Guard.WhenArgument(this.callHistory, "Call History ísn't initialized").IsNull().Throw();
+
+            this.callHistory.Add(new Call(dialedNum, duration, date, time));
+        }
+
+        public decimal CallPrice(decimal pricePerMinute)
+        {
+            Guard.WhenArgument(this.callHistory, "Call History ísn't initialized").IsNull().Throw();
+
+            decimal price = 0M;
+
+            foreach (Call c in this.callHistory)
+            {
+                price += c.Duration;
+            }
+
+            price = Math.Ceiling(price / 100) * pricePerMinute;
+
+            return price;
         }
     }
 }
