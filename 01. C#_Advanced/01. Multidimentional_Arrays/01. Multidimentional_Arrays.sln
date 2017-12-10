@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2003
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01. Fill_the_Matrix", "01. Fill_the_Matrix\01. Fill_the_Matrix.csproj", "{60DE348C-7CBB-4EA9-A976-A861D8FEB69A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02. Maximal_Sum", "02. Maximal_Sum\02. Maximal_Sum.csproj", "{FD5EA903-C145-48C1-99A5-F4DDDEDF2C7E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03. Sequence_in_Matrix", "03. Sequence_in_Matrix\03. Sequence_in_Matrix.csproj", "{02FF9776-BA95-45F9-84E6-334A06295BC3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05. Sort_String_by_Length", "05. Sort_String_by_Length\05. Sort_String_by_Length.csproj", "{1256FA47-60D4-4361-82C7-51E52A21AFAD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06. Largest_Area_in_Matrix", "06. Largest_Area_in_Matrix\06. Largest_Area_in_Matrix.csproj", "{D0BC36BE-B44C-4FCF-A4C9-D32F718FD1FE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "07. Bishop_Pathfinder", "07. Bishop_Pathfinder\07. Bishop_Pathfinder.csproj", "{CAB96207-326F-4C50-A47D-CB88E74C3F2F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{60DE348C-7CBB-4EA9-A976-A861D8FEB69A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60DE348C-7CBB-4EA9-A976-A861D8FEB69A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60DE348C-7CBB-4EA9-A976-A861D8FEB69A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60DE348C-7CBB-4EA9-A976-A861D8FEB69A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD5EA903-C145-48C1-99A5-F4DDDEDF2C7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD5EA903-C145-48C1-99A5-F4DDDEDF2C7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD5EA903-C145-48C1-99A5-F4DDDEDF2C7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD5EA903-C145-48C1-99A5-F4DDDEDF2C7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02FF9776-BA95-45F9-84E6-334A06295BC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02FF9776-BA95-45F9-84E6-334A06295BC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02FF9776-BA95-45F9-84E6-334A06295BC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02FF9776-BA95-45F9-84E6-334A06295BC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1256FA47-60D4-4361-82C7-51E52A21AFAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1256FA47-60D4-4361-82C7-51E52A21AFAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1256FA47-60D4-4361-82C7-51E52A21AFAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1256FA47-60D4-4361-82C7-51E52A21AFAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0BC36BE-B44C-4FCF-A4C9-D32F718FD1FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0BC36BE-B44C-4FCF-A4C9-D32F718FD1FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0BC36BE-B44C-4FCF-A4C9-D32F718FD1FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0BC36BE-B44C-4FCF-A4C9-D32F718FD1FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CAB96207-326F-4C50-A47D-CB88E74C3F2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CAB96207-326F-4C50-A47D-CB88E74C3F2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CAB96207-326F-4C50-A47D-CB88E74C3F2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CAB96207-326F-4C50-A47D-CB88E74C3F2F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B37D9C58-A07F-463A-AB69-E6476C757C37}
+	EndGlobalSection
+EndGlobal
