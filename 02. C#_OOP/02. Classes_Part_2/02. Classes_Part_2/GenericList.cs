@@ -106,7 +106,5 @@
         {
             return string.Join(" ", this.elements);
         }
-
-
     }
 }

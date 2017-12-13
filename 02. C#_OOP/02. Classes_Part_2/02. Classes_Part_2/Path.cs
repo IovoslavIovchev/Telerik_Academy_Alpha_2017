@@ -7,11 +7,36 @@
 
     class Path
     {
-        private static List<Point3D> path = new List<Point3D>();
+        private List<Point3D> path;
 
-        public static void Add(Point3D p)
+        public Path()
         {
-            path.Add(p);
+            this.path = new List<Point3D>();
+        }
+
+        public void Add(Point3D p)
+        {
+            this.path.Add(p);
+        }
+
+        public List<Point3D> Points
+        {
+            get
+            {
+                return this.path;
+            }
+        }
+
+        public override string ToString()
+        {
+            StringBuilder result = new StringBuilder();
+
+            foreach (var point in path)
+            {
+                result.AppendLine(point.ToString());
+            }
+
+            return result.ToString();
         }
     }
 }

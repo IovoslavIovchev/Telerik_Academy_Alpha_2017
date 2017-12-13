@@ -9,9 +9,28 @@
     {
         private T[,] matrix;
 
-        public Matrix(int size)
+        public Matrix(int r, int c)
         {
-            this.matrix = new T[size, size];
+            Guard.WhenArgument(r, "Matrix size").IsLessThan(0).Throw();
+            Guard.WhenArgument(c, "Matrix size").IsLessThan(0).Throw();
+
+            this.matrix = new T[r, c];
+        }
+
+        public int Columns
+        {
+            get
+            {
+                return this.matrix.GetLength(1);
+            }
+        }
+
+        public int Rows
+        {
+            get
+            {
+                return this.matrix.GetLength(0);
+            }
         }
 
         public T this[int index1, int index2]
@@ -42,6 +61,66 @@
 
                 this.matrix[index1, index2] = value;
             }
+        }
+
+        public static Matrix<T> operator+ (Matrix<T> one, Matrix<T> two)
+        {
+            if (one.Rows != two.Rows && one.Columns != two.Columns)
+            {
+                throw new ArgumentException("Matrices aren't of the same size");
+            }
+
+            Matrix<T> temp = new Matrix<T>(one.Rows, one.Columns);
+            
+            for (int i = 0; i < temp.Rows; i++)
+            {
+                for (int j = 0; j < temp.Columns; j++)
+                {
+                    temp[i, j] = (dynamic)one[i, j] + (dynamic)two[i, j];
+                }
+            }
+
+            return temp;
+        }
+
+        public static Matrix<T> operator -(Matrix<T> one, Matrix<T> two)
+        {
+            if (one.Rows != two.Rows && one.Columns != two.Columns)
+            {
+                throw new ArgumentException("Matrices aren't of the same size");
+            }
+
+            Matrix<T> temp = new Matrix<T>(one.Rows, one.Columns);
+
+            for (int i = 0; i < temp.Rows; i++)
+            {
+                for (int j = 0; j < temp.Columns; j++)
+                {
+                    temp[i, j] = (dynamic)one[i, j] - (dynamic)two[i, j];
+                }
+            }
+
+            return temp;
+        }
+
+        public static Matrix<T> operator *(Matrix<T> one, Matrix<T> two)
+        {
+            if (one.Rows != two.Rows && one.Columns != two.Columns)
+            {
+                throw new ArgumentException("Matrices aren't of the same size");
+            }
+
+            Matrix<T> temp = new Matrix<T>(one.Rows, one.Columns);
+
+            for (int i = 0; i < temp.Rows; i++)
+            {
+                for (int j = 0; j < temp.Columns; j++)
+                {
+                    temp[i, j] = (dynamic)one[i, j] * (dynamic)two[i, j];
+                }
+            }
+
+            return temp;
         }
 
         public override string ToString()
