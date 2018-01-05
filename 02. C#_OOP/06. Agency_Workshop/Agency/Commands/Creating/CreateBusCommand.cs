@@ -1,22 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using Agency.Commands.Contracts;
 using Agency.Core.Contracts;
 
 namespace Agency.Commands.Creating
 {
-    public class CreateBusCommand : ICommand
+    public class CreateBusCommand : CreateVehicleCommand
     {
-        private readonly IAgencyFactory factory;
-        private readonly IEngine engine;
-
         public CreateBusCommand(IAgencyFactory factory, IEngine engine)
+            : base(factory, engine)
         {
-            this.factory = factory;
-            this.engine = engine;
+
         }
 
-        public string Execute(IList<string> parameters)
+        public override string Execute(IList<string> parameters)
         {
             int passengerCapacity;
             decimal pricePerKilometer;

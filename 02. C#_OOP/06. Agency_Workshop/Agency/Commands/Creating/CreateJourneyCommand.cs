@@ -6,18 +6,14 @@ using Agency.Models.Vehicles.Contracts;
 
 namespace Agency.Commands.Creating
 {
-    public class CreateJourneyCommand : ICommand
+    public class CreateJourneyCommand : CreateVehicleCommand
     {
-        private readonly IAgencyFactory factory;
-        private readonly IEngine engine;
-
         public CreateJourneyCommand(IAgencyFactory factory, IEngine engine)
+            : base(factory, engine)
         {
-            this.factory = factory;
-            this.engine = engine;
         }
 
-        public string Execute(IList<string> parameters)
+        public override string Execute(IList<string> parameters)
         {
             string startLocation;
             string destination;

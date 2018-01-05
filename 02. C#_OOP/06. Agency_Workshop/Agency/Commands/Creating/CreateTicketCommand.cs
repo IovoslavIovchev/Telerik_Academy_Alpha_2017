@@ -1,24 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using Agency.Commands.Contracts;
 using Agency.Core.Contracts;
 using Agency.Models.Contracts;
-using Agency.Models.Vehicles.Contracts;
 
 namespace Agency.Commands.Creating
 {
-    public class CreateTicketCommand : ICommand
+    public class CreateTicketCommand : CreateVehicleCommand
     {
-        private readonly IAgencyFactory factory;
-        private readonly IEngine engine;
-
         public CreateTicketCommand(IAgencyFactory factory, IEngine engine)
+            : base(factory, engine)
         {
-            this.factory = factory;
-            this.engine = engine;
         }
 
-        public string Execute(IList<string> parameters)
+        public override string Execute(IList<string> parameters)
         {
             IJourney journey;
             decimal administrativeCosts;
