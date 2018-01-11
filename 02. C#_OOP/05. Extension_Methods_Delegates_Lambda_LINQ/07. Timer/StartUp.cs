@@ -5,23 +5,18 @@ namespace Timer
 {
     public class StartUp
     {
-        public delegate void Action(int t);
+        public delegate void Action();
 
         static void Main()
         {
-            Action executeTimer = new Action(Timer.Wait);
-            executeTimer += PrintNumber;
+            Action timedSayHello = new Action(SayHi);
 
-            int counter = 0;
-            while (counter++ < 20)
-            {
-                executeTimer(counter);
-            }
+            Timer.TimedExecute(timedSayHello, 1, 100);
         }
 
-        static void PrintNumber(int num)
+        static void SayHi()
         {
-            Console.WriteLine(num);
+            Console.WriteLine("Hi");
         }
     }
 }

@@ -8,23 +8,27 @@ namespace Jedi_Meditation
     {
         static void Main()
         {
-            int N = int.Parse(Console.ReadLine());
-            string[] waitingJedi = Console.ReadLine().ToUpper().Split();
+            Console.ReadLine();
+            string[] waitingJedi = Console.ReadLine().Split();
 
-            List<string> m = waitingJedi
-                .Where(x => x.StartsWith("M"))
-                //.OrderByDescending(x => decimal.Parse(x.Substring(1)))
-                .ToList();
-            List<string> k = waitingJedi
-                .Where(x => x.StartsWith("K"))
-                //.OrderByDescending(x => decimal.Parse(x.Substring(1)))
-                .ToList();
-            List<string> p = waitingJedi.Where(x => x.StartsWith("P")).ToList();
+            Queue<string> m = new Queue<string>();
+            Queue<string> k = new Queue<string>();
+            Queue<string> p = new Queue<string>();
 
-            m.AddRange(k);
-            m.AddRange(p);
+            for (int i = 0; i < waitingJedi.Length; i++)
+            {
+                switch (waitingJedi[i][0])
+                {
+                    case 'M': m.Enqueue(waitingJedi[i]);
+                        break;
+                    case 'K': k.Enqueue(waitingJedi[i]);
+                        break;
+                    case 'P': p.Enqueue(waitingJedi[i]);
+                        break;
+                }
+            }
 
-            Console.WriteLine(string.Join(" ", m));
+            Console.WriteLine($"{string.Join(" ", m)} {string.Join(" ", k)} {string.Join(" ", p)}");
         }
     }
 }
