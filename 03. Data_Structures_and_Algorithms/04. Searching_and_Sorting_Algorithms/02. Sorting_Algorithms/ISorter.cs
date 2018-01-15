@@ -5,6 +5,6 @@
 
     public interface ISorter<T> where T : IComparable<T>
     {
-        void Sort(IList<T> collection);
+        IList<T> Sort(IList<T> collection);
     }
 }

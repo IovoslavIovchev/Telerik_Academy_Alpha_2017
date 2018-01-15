@@ -5,7 +5,7 @@
 
     public class SortableCollection<T> where T : IComparable<T>
     {
-        private readonly IList<T> items;
+        private IList<T> items;
 
         public SortableCollection()
         {
@@ -27,12 +27,20 @@
 
         public void Sort(ISorter<T> sorter)
         {
-            sorter.Sort(this.items);
+            this.items = sorter.Sort(this.items);
         }
 
         public bool LinearSearch(T item)
         {
-            throw new NotImplementedException();
+            for (int i = 0; i < this.items.Count; i++)
+            {
+                if (this.items[i].Equals(item))
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         public bool BinarySearch(T item)

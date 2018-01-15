@@ -8,16 +8,16 @@
 
     public class Quicksorter<T> : ISorter<T> where T : IComparable<T>
     {
-        public void Sort(IList<T> collection)
+        public IList<T> Sort(IList<T> collection)
         {
             T[] array = collection.ToArray();
 
             Sort(array, 0, array.Length - 1);
 
-            collection = array.ToList();
+            return array.ToList();
         }
 
-        public void Sort(T[] array, int low, int high)
+        private void Sort(T[] array, int low, int high)
         {
             if (high <= low) return;
 
@@ -38,7 +38,7 @@
             }
         }
 
-        public static int Partition(T[] array, int low, int high)
+        private static int Partition(T[] array, int low, int high)
         {
             int i = low;
             int j = high + 1;

@@ -59,6 +59,8 @@
     <Compile Include="ISorter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SortableCollection.cs" />
+    <Compile Include="Sorter.cs" />
+    <Compile Include="StartUp.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

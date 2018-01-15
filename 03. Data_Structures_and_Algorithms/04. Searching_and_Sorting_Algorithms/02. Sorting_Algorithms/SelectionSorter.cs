@@ -8,7 +8,7 @@
 
     public class SelectionSorter<T> : ISorter<T> where T : IComparable<T>
     {
-        public void Sort(IList<T> collection)
+        public IList<T> Sort(IList<T> collection)
         {
             T[] array = collection.ToArray();
 
@@ -24,12 +24,12 @@
                     }
                 }
 
-                T temp = array[j];
-                array[j] = array[i];
+                T temp = array[min];
+                array[min] = array[i];
                 array[i] = temp;
             }
 
-            collection = array.ToList();
+            return array.ToList();
         }
     }
 }
