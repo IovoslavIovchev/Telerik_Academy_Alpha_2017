@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
-namespace Combinations_with_Duplicates
+namespace Program
 {
     class StartUp
     {

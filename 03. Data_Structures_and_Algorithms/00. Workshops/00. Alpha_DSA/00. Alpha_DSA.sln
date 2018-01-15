@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2020
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01. Player_Ranking", "01. Player_Ranking\01. Player_Ranking.csproj", "{6D770A6A-1E3A-43E3-8CCB-6C0DF5623BD7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02. Guards", "02. Guards\02. Guards.csproj", "{C8FD424B-3FED-4469-B14F-29D0DE4B934C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6D770A6A-1E3A-43E3-8CCB-6C0DF5623BD7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D770A6A-1E3A-43E3-8CCB-6C0DF5623BD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D770A6A-1E3A-43E3-8CCB-6C0DF5623BD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D770A6A-1E3A-43E3-8CCB-6C0DF5623BD7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8FD424B-3FED-4469-B14F-29D0DE4B934C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8FD424B-3FED-4469-B14F-29D0DE4B934C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8FD424B-3FED-4469-B14F-29D0DE4B934C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8FD424B-3FED-4469-B14F-29D0DE4B934C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {58352E0B-A57F-4B58-9ED9-ADEB0DE8ABB5}
+	EndGlobalSection
+EndGlobal
