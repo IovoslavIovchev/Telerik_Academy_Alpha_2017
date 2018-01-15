@@ -3,8 +3,8 @@
     using System;
     using System.Collections.Generic;
 
-    public interface ISorter<T>
+    public interface ISorter<T> where T : IComparable<T>
     {
-        IList<T> Sort(IList<T> collection);
+        void Sort(IList<T> collection);
     }
 }
