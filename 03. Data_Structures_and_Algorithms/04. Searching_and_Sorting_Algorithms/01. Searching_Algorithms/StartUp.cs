@@ -1,10 +1,11 @@
-﻿using System;
+﻿using SortingHomework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SortingHomework
+namespace SearchingHomework
 {
     class StartUp
     {
