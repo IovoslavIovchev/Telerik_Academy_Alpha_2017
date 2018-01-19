@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Combinations_with_Duplicates
+namespace Combinations_without_Duplicates
 {
     class StartUp
     {
@@ -30,6 +30,11 @@ namespace Combinations_with_Duplicates
         {
             if (iteration == K)
             {
+                for (int i = K - 1; i > 0; i--)
+                {
+                    if (array[i] <= array[i - 1]) return;
+                }
+
                 result.Add($"({string.Join(" ", array)})");
                 return;
             }

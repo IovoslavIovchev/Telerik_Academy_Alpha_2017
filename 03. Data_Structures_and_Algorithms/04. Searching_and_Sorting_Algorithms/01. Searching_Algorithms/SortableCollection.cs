@@ -1,4 +1,4 @@
-﻿namespace SortingHomework
+﻿namespace SearchingHomework
 {
     using System;
     using System.Collections.Generic;
@@ -58,10 +58,10 @@
         {
             if (!this.items[0].Equals(this.items[1]))
             {
-                Sort(new SelectionSorter<T>());
+                Sort(new NoobSorter<T>());
             }
 
-            return Search(item, items.ToArray(), 0, items.Count);
+            return Search(item, items.ToArray(), 0, items.Count - 1);
         }
 
         private bool Search(T item, T[] array, int start, int end)
