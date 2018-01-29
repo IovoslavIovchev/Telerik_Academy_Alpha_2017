@@ -15,9 +15,9 @@ namespace Expressions
             string number = Console.ReadLine();
             N = int.Parse(Console.ReadLine());
 
-            for (int i = 1; i <= number.Length; i++)
+            for (int i = 1; i < number.Length; i++)
             {
-                int tempNum = int.Parse(number.Substring(0, i));
+                int tempNum = int.Parse(number.Substring(i - 1, i));
                 string restOfNum = number.Substring(i);
 
                 Recurse(restOfNum, tempNum);
@@ -36,19 +36,24 @@ namespace Expressions
                 return;
             }
 
-            int temp = int.Parse(number[0].ToString());
-            string restOfNum = number.Substring(1);
+            for (int i = number.Length; i > -1; i--)
+            {
+                string temp = number.Substring(0, i);
+                string restOfNum = number.Substring(i);
 
-            Recurse(restOfNum, total * temp);
-            Recurse(restOfNum, total + temp);
-            Recurse(restOfNum, total - temp);
+                if (temp.Length > 1 && temp[0] == '0')
+                {
+                    continue;
+                }
 
-            if (restOfNum == string.Empty) return;
-            int parsedRest = int.Parse(restOfNum);
+                if (temp == string.Empty) return;
 
-            Recurse(string.Empty, total * parsedRest);
-            Recurse(string.Empty, total + parsedRest);
-            Recurse(string.Empty, total - parsedRest);
+                int tempNum = int.Parse(temp);
+
+                Recurse(restOfNum, total * tempNum);
+                Recurse(restOfNum, total + tempNum);
+                Recurse(restOfNum, total - tempNum);
+            }
         }
     }
 }
