@@ -41,6 +41,7 @@ namespace Secret_Message
                 }
 
                 message = message.Replace($"{count}{{{tempString}}}", sb.ToString());
+               
 
                 start = message.LastIndexOf('{') + 1;
                 length = message.IndexOf('}', start) - start;

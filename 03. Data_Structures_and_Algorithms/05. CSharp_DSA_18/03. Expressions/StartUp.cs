@@ -1,48 +1,54 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace Expressions
 {
     class StartUp
     {
-        static string numbers;
+        private static int N;
 
-        static int N;
+        private static int count = 0;
 
-        static int max;
-
-        static void Main()
+        public static void Main()
         {
-            numbers = Console.ReadLine();
+            string number = Console.ReadLine();
             N = int.Parse(Console.ReadLine());
-            max = 0;
 
-            Recurse(numbers);
+            for (int i = 1; i <= number.Length; i++)
+            {
+                int tempNum = int.Parse(number.Substring(0, i));
+                string restOfNum = number.Substring(i);
 
-            Console.WriteLine(max);
+                Recurse(restOfNum, tempNum);
+            }
+
+            Console.WriteLine(count);
         }
 
-        static void Recurse(string input, int result = 0)
+        private static void Recurse(string number, int total)
         {
-            if (input.StartsWith("0")) return;
-
-            if (result == N)
+            if (number == string.Empty)
             {
-                max++;
+                Debug.WriteLine(total); //Remove
+                if (total == N) count++;
+                
                 return;
             }
 
-            for (int i = 1; i < input.Length + 1; i++)
-            {
-                int current = int.Parse(input.Substring(0, i));
-                string next = input.Substring(i);
+            int temp = int.Parse(number[0].ToString());
+            string restOfNum = number.Substring(1);
 
-                Console.WriteLine($"{current} {next}");
+            Recurse(restOfNum, total * temp);
+            Recurse(restOfNum, total + temp);
+            Recurse(restOfNum, total - temp);
 
-                Recurse(next, result * current);
-                Recurse(next, result + current);
-                Recurse(next, result - current);
-            }
+            if (restOfNum == string.Empty) return;
+            int parsedRest = int.Parse(restOfNum);
+
+            Recurse(string.Empty, total * parsedRest);
+            Recurse(string.Empty, total + parsedRest);
+            Recurse(string.Empty, total - parsedRest);
         }
     }
 }
