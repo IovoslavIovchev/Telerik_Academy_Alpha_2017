@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("OlympicGames.NewClient")]
+[assembly: AssemblyTitle("OlympicGames.StartUp")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("OlympicGames.NewClient")]
+[assembly: AssemblyProduct("OlympicGames.StartUp")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("cb00bb6b-2c81-4247-8ff6-715448fe1b41")]
+[assembly: Guid("a7d2ab9f-2fa9-4705-88a5-7b6b0ca0bc19")]
 
 // Version information for an assembly consists of the following four values:
 //

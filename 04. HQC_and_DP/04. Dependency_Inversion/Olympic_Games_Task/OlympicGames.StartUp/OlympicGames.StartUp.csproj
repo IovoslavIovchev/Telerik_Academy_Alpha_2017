@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B6476FE6-C278-4830-AFAA-935569914366}</ProjectGuid>
+    <ProjectGuid>{A7D2AB9F-2FA9-4705-88A5-7B6B0CA0BC19}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>OlympicsGames.ConsoleClient</RootNamespace>
-    <AssemblyName>OlympicsGames.ConsoleClient</AssemblyName>
+    <RootNamespace>OlympicGames.StartUp</RootNamespace>
+    <AssemblyName>OlympicGames.StartUp</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
