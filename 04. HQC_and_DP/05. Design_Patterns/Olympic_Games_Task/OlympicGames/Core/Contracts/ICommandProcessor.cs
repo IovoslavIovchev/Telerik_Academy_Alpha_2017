@@ -6,6 +6,10 @@ namespace OlympicGames.Core.Contracts
     {
         ICollection<ICommand> Commands { get; }
 
+        void Add(ICommand command);
+
+        void ProcessCommands();
+
         void ProcessSingleCommand(ICommand command);
     }
 }

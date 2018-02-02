@@ -1,13 +1,15 @@
-﻿using OlympicGames.Core.Contracts;
-using OlympicGames.Core.Factories;
-using System;
+﻿using System;
 using System.Linq;
 using System.Reflection;
+using OlympicGames.Core.Contracts;
+using OlympicGames.Core.Factories;
 
 namespace OlympicGames.Core.Providers
 {
     public class CommandParser : ICommandParser
     {
+        public CommandParser() { }
+
         public ICommand ParseCommand(string commandLine)
         {
             var lineParameters = commandLine.Trim().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
@@ -16,7 +18,13 @@ namespace OlympicGames.Core.Providers
             var parameters = lineParameters.Skip(1);
 
             var typeInfo = FindCommand(commandName);
-            var command = Activator.CreateInstance(typeInfo, new OlympicCommittee(), new OlympicsFactory(), parameters.ToList()) as ICommand;
+            var command = Activator.CreateInstance(
+                typeInfo, 
+                new OlympicCommittee(), 
+                new OlympicsFactory(), 
+                parameters.ToList()) 
+                as ICommand;
+
             return command;
         }
 

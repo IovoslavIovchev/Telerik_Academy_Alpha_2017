@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-
 using OlympicGames.Core.Contracts;
 using OlympicGames.Olympics.Contracts;
 using OlympicGames.Utils;
@@ -16,7 +15,7 @@ namespace OlympicGames.Core.Commands
         public CreateBoxerCommand(IOlympicCommittee committee, IOlympicsFactory factory, IList<string> commandLine)
             : base(committee, factory, commandLine)
         {
-            if(this.CommandParameters.Count != 3)
+            if (this.CommandParameters.Count != 3)
             {
                 throw new ArgumentException(GlobalConstants.ParametersCountInvalid);
             }
@@ -34,7 +33,7 @@ namespace OlympicGames.Core.Commands
 
         protected override IOlympian CreatePerson()
         {
-           return this.Factory.CreateBoxer(this.FirstName, this.LastName, this.Country, this.category, this.wins, this.losses);
+            return this.Factory.CreateBoxer(this.FirstName, this.LastName, this.Country, this.category, this.wins, this.losses);
         }
     }
 }

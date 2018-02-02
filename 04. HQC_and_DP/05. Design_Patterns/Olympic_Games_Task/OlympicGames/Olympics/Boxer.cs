@@ -22,22 +22,15 @@ namespace OlympicGames.Olympics
 
         public BoxingCategory Category
         {
-            get
-            {
-                return this.category;
-            }
-            private set
-            {
-                this.category = value;
-            }
+            get => this.category;
+
+            private set => this.category = value;
         }
 
         public int Losses
         {
-            get
-            {
-                return this.losses;
-            }
+            get => this.losses;
+
             private set
             {
                 value.ValidateMinAndMaxNumber(0, 100, "Losses");
@@ -47,10 +40,8 @@ namespace OlympicGames.Olympics
 
         public int Wins
         {
-            get
-            {
-                return this.wins;
-            }
+            get => this.wins;
+
             private set
             {
                 value.ValidateMinAndMaxNumber(0, 100, "Wins");

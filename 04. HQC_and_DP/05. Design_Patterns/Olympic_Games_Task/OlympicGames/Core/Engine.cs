@@ -11,8 +11,6 @@ namespace OlympicGames.Core
         private readonly ICommandParser parser;
         private readonly ICommandProcessor commandProcessor;
         private readonly IOlympicsFactory factory;
-        private readonly IIoWrapper ioWrapper;
-
         private readonly IOlympicCommittee committee;
 
         private const string Delimiter = "####################";
@@ -21,14 +19,12 @@ namespace OlympicGames.Core
             ICommandParser commandParser,
             ICommandProcessor commandProcessor,
             IOlympicCommittee committee,
-            IOlympicsFactory factory,
-            IIoWrapper ioWrapper)
+            IOlympicsFactory factory
+        )
         {
             this.parser = commandParser;
             this.commandProcessor = commandProcessor;
             this.factory = factory;
-            this.ioWrapper = ioWrapper;
-
             this.committee = committee;
         }
 
@@ -36,15 +32,16 @@ namespace OlympicGames.Core
         {
             string commandLine = null;
 
-            while ((commandLine = this.ioWrapper.ReadWithWrapper()) != "end")
+            while ((commandLine = Console.ReadLine()) != "end")
             {
                 try
                 {
-                    var command = this.parser.ParseCommand(commandLine);
+                    var command = this.parser.ParseCommand(commandLine); //!!!
                     if (command != null)
                     {
+                        //this.commandProcessor.Add(command);
                         this.commandProcessor.ProcessSingleCommand(command);
-                        this.ioWrapper.WriteWithWrapper(Delimiter);
+                        Console.WriteLine(Delimiter);
                     }
                 }
                 catch (Exception ex)
@@ -59,6 +56,6 @@ namespace OlympicGames.Core
             }
         }
 
-
+        
     }
 }

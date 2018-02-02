@@ -15,6 +15,21 @@ namespace OlympicGames.Core.Providers
 
         public ICollection<ICommand> Commands { get; private set; }
 
+        public void Add(ICommand command)
+        {
+            this.Commands.Add(command);
+        }
+
+        public void ProcessCommands()
+        {
+            foreach (var command in this.Commands)
+            {
+                var result = command.Execute();
+                var normalizedOutput = this.NormalizeOutput(result);
+                Console.WriteLine(normalizedOutput);
+            }
+        }
+
         public void ProcessSingleCommand(ICommand command)
         {
             var result = command.Execute();
