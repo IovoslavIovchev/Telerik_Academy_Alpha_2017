@@ -19,7 +19,8 @@ namespace OlympicGames.Core
             ICommandParser commandParser,
             ICommandProcessor commandProcessor,
             IOlympicCommittee committee,
-            IOlympicsFactory factory)
+            IOlympicsFactory factory
+        )
         {
             this.parser = commandParser;
             this.commandProcessor = commandProcessor;
@@ -35,7 +36,7 @@ namespace OlympicGames.Core
             {
                 try
                 {
-                    var command = this.parser.ParseCommand(commandLine);
+                    var command = this.parser.ParseCommand(commandLine); //!!!
                     if (command != null)
                     {
                         //this.commandProcessor.Add(command);

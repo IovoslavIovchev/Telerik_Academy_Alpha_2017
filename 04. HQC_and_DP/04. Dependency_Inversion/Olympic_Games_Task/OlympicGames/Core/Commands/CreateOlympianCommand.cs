@@ -1,24 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
 using OlympicGames.Core.Commands.Abstracts;
-using OlympicGames.Core.Contracts;
 using OlympicGames.Olympics.Contracts;
 using OlympicGames.Utils;
+using OlympicGames.Core.Contracts;
 
 namespace OlympicGames.Core.Commands
 {
     public abstract class CreateOlympianCommand : Command
     {
-        protected CreateOlympianCommand(IOlympicCommittee committee, IOlympicsFactory factory, IList<string> commandLine)
-            : base(committee, factory, commandLine)
+        public CreateOlympianCommand(IOlympicCommittee committee, IOlympicsFactory factory, IList<string> commandParameters)
+            : base(committee, factory, commandParameters)
         {
-            commandLine.ValidateIfNull();
+            commandParameters.ValidateIfNull();
 
-            this.CommandParameters = commandLine;
+            this.CommandParameters = commandParameters;
 
-            if (commandLine.Count < 3)
+            if (commandParameters.Count < 3)
             {
                 throw new ArgumentException(GlobalConstants.ParametersCountInvalid);
             }

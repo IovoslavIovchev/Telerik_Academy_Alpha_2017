@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Linq;
 using System.Reflection;
-
 using OlympicGames.Core.Contracts;
-using OlympicGames.Olympics.Contracts;
+using OlympicGames.Core.Factories;
 
 namespace OlympicGames.Core.Providers
 {
@@ -16,12 +15,16 @@ namespace OlympicGames.Core.Providers
             var lineParameters = commandLine.Trim().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
 
             var commandName = lineParameters[0];
-            //CheckForBaseClassImplementation(commandName);
-            //CheckForBaseClassTwoDerivedClasses(commandName);
             var parameters = lineParameters.Skip(1);
 
             var typeInfo = FindCommand(commandName);
-            var command = Activator.CreateInstance(typeInfo, parameters.ToList()) as ICommand;
+            var command = Activator.CreateInstance(
+                typeInfo, 
+                new OlympicCommittee(), 
+                new OlympicsFactory(), 
+                parameters.ToList()) 
+                as ICommand;
+
             return command;
         }
 
@@ -41,38 +44,5 @@ namespace OlympicGames.Core.Providers
 
             return commandType;
         }
-
-        //#region DoNotTouch
-        //private void CheckForBaseClassImplementation(string commandName)
-        //{
-        //    if (commandName == "checkbaseclass")
-        //    {
-        //        var assembly = Assembly.GetAssembly(typeof(IOlympian));
-        //        var baseClass = assembly.DefinedTypes.Where(type => type.IsAbstract)
-        //            .Where(x => x.IsClass)
-        //            .FirstOrDefault(x => x.ImplementedInterfaces.Contains(typeof(IOlympian)));
-        //
-        //        if (baseClass != null)
-        //        {
-        //            throw new ArgumentException("BASE CLASS FOUND");
-        //        }
-        //    }
-        //}
-        //
-        //private void CheckForBaseClassTwoDerivedClasses(string commandName)
-        //{
-        //    if (commandName == "checkbaseclassderived")
-        //    {
-        //        var assembly = Assembly.GetAssembly(typeof(IOlympian));
-        //        var baseClass = assembly.DefinedTypes.Where(type => type.IsAbstract)
-        //            .Where(x => x.IsClass)
-        //            .FirstOrDefault(x => x.ImplementedInterfaces.Contains(typeof(IOlympian)));
-        //
-        //        var baseClassesInheritans = assembly.DefinedTypes.Where(type => type.IsSubclassOf(baseClass)).Where(x => !x.IsAbstract);
-        //
-        //        throw new ArgumentException(string.Format("BASE CLASS DERIVED COUNT: {0}", baseClassesInheritans.Count()));
-        //    }
-        //}
-        //#endregion
     }
 }

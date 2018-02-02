@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
 using OlympicGames.Core.Commands.Abstracts;
 using OlympicGames.Core.Contracts;
 using OlympicGames.Utils;

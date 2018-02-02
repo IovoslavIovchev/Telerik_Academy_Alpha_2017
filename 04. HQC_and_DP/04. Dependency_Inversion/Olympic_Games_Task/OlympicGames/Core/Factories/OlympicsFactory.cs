@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-
 using OlympicGames.Core.Contracts;
 using OlympicGames.Olympics.Contracts;
 using OlympicGames.Olympics;

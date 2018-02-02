@@ -20,10 +20,8 @@ namespace OlympicGames.Olympics
 
         public string FirstName
         {
-            get
-            {
-                return this.firstName;
-            }
+            get => this.firstName;
+            
             private set
             {
                 value.ValidateMinAndMaxLength(2, 20, "First name");
@@ -33,10 +31,8 @@ namespace OlympicGames.Olympics
 
         public string LastName
         {
-            get
-            {
-                return this.lastName;
-            }
+            get => this.lastName;
+
             private set
             {
                 value.ValidateMinAndMaxLength(2, 20, "Last name");
@@ -46,10 +42,8 @@ namespace OlympicGames.Olympics
 
         public string Country
         {
-            get
-            {
-                return this.country;
-            }
+            get => this.country;
+            
             private set
             {
                 value.ValidateMinAndMaxLength(3, 25, "Country");
