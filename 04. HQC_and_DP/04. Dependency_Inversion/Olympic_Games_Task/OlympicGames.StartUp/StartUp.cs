@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Reflection;
+using Autofac;
+using OlympicGames.Core.Contracts;
 
 namespace OlympicGames.StartUp
 {
@@ -10,7 +9,20 @@ namespace OlympicGames.StartUp
     {
         static void Main()
         {
+            IEngine Engine = InitializeEngine();
 
+            Engine.Run();
+        }
+
+        private static IEngine InitializeEngine()
+        {
+            ContainerBuilder builder = new ContainerBuilder();
+
+            builder.RegisterAssemblyModules(Assembly.GetExecutingAssembly());
+
+            IEngine engine = builder.Build().Resolve<IEngine>();
+
+            return engine;
         }
     }
 }

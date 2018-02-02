@@ -8,16 +8,16 @@ namespace OlympicGames.Core.Commands.Abstracts
 {
     public abstract class Command : ICommand
     {
-        public Command(IList<string> commandLine)
+        public Command(IOlympicCommittee committee, IOlympicsFactory factory, IList<string> commandLine)
         {
-            this.Committee = OlympicCommittee.Instance;
-            this.Factory = OlympicsFactory.Instance;
+            this.Committee = committee;
+            this.Factory = factory;
             this.CommandParameters = commandLine;
         }
 
         public IList<string> CommandParameters { get; protected set; }
 
-        public OlympicCommittee Committee { get; }
+        public IOlympicCommittee Committee { get; }
 
         public IOlympicsFactory Factory { get; }
 

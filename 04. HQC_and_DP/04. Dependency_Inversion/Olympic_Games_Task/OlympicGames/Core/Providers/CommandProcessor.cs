@@ -8,23 +8,9 @@ namespace OlympicGames.Core.Providers
 {
     public class CommandProcessor : ICommandProcessor
     {
-        private static CommandProcessor instance;
-
-        private CommandProcessor()
+        public CommandProcessor()
         {
             this.Commands = new List<ICommand>();
-        }
-
-        public static CommandProcessor Instance {
-            get
-            {
-                if(instance == null)
-                {
-                    instance = new CommandProcessor();
-                }
-
-                return instance;
-            }
         }
 
         public ICollection<ICommand> Commands { get; private set; }

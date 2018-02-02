@@ -13,8 +13,8 @@ namespace OlympicGames.Core.Commands
         private string key;
         private string order;
 
-        public ListOlympiansCommand(IList<string> commandParameters)
-            : base(commandParameters)
+        public ListOlympiansCommand(IOlympicCommittee committee, IOlympicsFactory factory, IList<string> commandLine)
+            : base(committee, factory, commandLine)
         {
             if (this.CommandParameters == null || this.CommandParameters.Count == 0)
             {
@@ -28,7 +28,7 @@ namespace OlympicGames.Core.Commands
             }
             else
             {
-                if (commandParameters[1].ToLower() != "asc" && commandParameters[1].ToLower() != "desc")
+                if (commandLine[1].ToLower() != "asc" && commandLine[1].ToLower() != "desc")
                 {
                     this.order = "asc";
                 }

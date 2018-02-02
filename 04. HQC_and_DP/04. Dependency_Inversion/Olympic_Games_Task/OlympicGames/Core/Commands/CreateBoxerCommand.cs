@@ -13,8 +13,8 @@ namespace OlympicGames.Core.Commands
         private readonly int wins;
         private readonly int losses;
 
-        public CreateBoxerCommand(IList<string> commandLine)
-            : base(commandLine)
+        public CreateBoxerCommand(IOlympicCommittee committee, IOlympicsFactory factory, IList<string> commandLine)
+            : base(committee, factory, commandLine)
         {
             if(this.CommandParameters.Count != 3)
             {

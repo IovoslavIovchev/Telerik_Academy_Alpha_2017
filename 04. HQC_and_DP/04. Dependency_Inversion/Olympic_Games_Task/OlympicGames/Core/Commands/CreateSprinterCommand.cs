@@ -10,8 +10,8 @@ namespace OlympicGames.Core.Commands
     {
         private readonly IDictionary<string, double> records;
 
-        public CreateSprinterCommand(IList<string> commandParameters)
-            : base(commandParameters)
+        public CreateSprinterCommand(IOlympicCommittee committee, IOlympicsFactory factory, IList<string> commandLine)
+            : base(committee, factory, commandLine)
         {
             this.records = new Dictionary<string, double>();
 

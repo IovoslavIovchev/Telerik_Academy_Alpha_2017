@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 using OlympicGames.Core.Commands.Abstracts;
+using OlympicGames.Core.Contracts;
 using OlympicGames.Olympics.Contracts;
 using OlympicGames.Utils;
 
@@ -10,14 +11,14 @@ namespace OlympicGames.Core.Commands
 {
     public abstract class CreateOlympianCommand : Command
     {
-        protected CreateOlympianCommand(IList<string> commandParameters)
-            : base(commandParameters)
+        protected CreateOlympianCommand(IOlympicCommittee committee, IOlympicsFactory factory, IList<string> commandLine)
+            : base(committee, factory, commandLine)
         {
-            commandParameters.ValidateIfNull();
+            commandLine.ValidateIfNull();
 
-            this.CommandParameters = commandParameters;
+            this.CommandParameters = commandLine;
 
-            if (commandParameters.Count < 3)
+            if (commandLine.Count < 3)
             {
                 throw new ArgumentException(GlobalConstants.ParametersCountInvalid);
             }

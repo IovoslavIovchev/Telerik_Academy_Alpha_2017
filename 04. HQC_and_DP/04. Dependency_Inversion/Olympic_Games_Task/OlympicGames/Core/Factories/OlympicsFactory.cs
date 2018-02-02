@@ -10,22 +10,7 @@ namespace OlympicGames.Core.Factories
 {
     public class OlympicsFactory : IOlympicsFactory
     {
-        private static OlympicsFactory instance;
-
-        private OlympicsFactory() { }
-
-        public static OlympicsFactory Instance
-        {
-            get
-            {
-                if(instance == null)
-                {
-                    instance = new OlympicsFactory();
-                }
-
-                return instance;
-            }
-        }
+        public OlympicsFactory() { }
 
         public IOlympian CreateBoxer(string firstName, string lastName, string country, string category, int wins, int losses)
         {
