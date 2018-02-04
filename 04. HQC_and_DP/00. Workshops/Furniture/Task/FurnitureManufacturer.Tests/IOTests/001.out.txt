@@ -1,0 +1,27 @@
+Company FurnitureTelerik created
+FurnitureTelerik - 1234567890 - no furnitures
+Table SmallTable created
+Chair TestChair created
+Chair MyChair created
+Chair NewChair created
+FurnitureTelerik - 1234567890 - no furnitures
+Furniture SmallTable added to company FurnitureTelerik
+Furniture TestChair added to company FurnitureTelerik
+Furniture MyChair added to company FurnitureTelerik
+Furniture NewChair added to company FurnitureTelerik
+FurnitureTelerik - 1234567890 - 4 furnitures
+Type: Chair, Model: NewChair, Material: Plastic, Price: 80.00, Height: 1.00, Legs: 3
+Type: Chair, Model: TestChair, Material: Leather, Price: 99.99, Height: 1.20, Legs: 5
+Type: Chair, Model: MyChair, Material: Leather, Price: 111.56, Height: 0.80, Legs: 4
+Type: Table, Model: SmallTable, Material: Wooden, Price: 123.4, Height: 0.50, Length: 0.45, Width: 0.65, Area: 0.2925
+Furniture NewChair removed from company FurnitureTelerik
+FurnitureTelerik - 1234567890 - 3 furnitures
+Type: Chair, Model: TestChair, Material: Leather, Price: 99.99, Height: 1.20, Legs: 5
+Type: Chair, Model: MyChair, Material: Leather, Price: 111.56, Height: 0.80, Legs: 4
+Type: Table, Model: SmallTable, Material: Wooden, Price: 123.4, Height: 0.50, Length: 0.45, Width: 0.65, Area: 0.2925
+Type: Chair, Model: MyChair, Material: Leather, Price: 111.56, Height: 0.80, Legs: 4
+Furniture NewChair not found
+Furniture MyChair removed from company FurnitureTelerik
+Furniture SmallTable removed from company FurnitureTelerik
+FurnitureTelerik - 1234567890 - 1 furniture
+Type: Chair, Model: TestChair, Material: Leather, Price: 99.99, Height: 1.20, Legs: 5
