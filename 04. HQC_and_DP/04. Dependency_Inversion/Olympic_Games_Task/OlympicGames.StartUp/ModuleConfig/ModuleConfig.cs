@@ -13,7 +13,7 @@ namespace OlympicGames.StartUp.ModuleConfig
                 .AsImplementedInterfaces()
                 .SingleInstance();
 
-            builder.RegisterType<ContainerBuilder>().SingleInstance();
+           // builder.RegisterType<ContainerBuilder>().SingleInstance();
         }
     }
 }
