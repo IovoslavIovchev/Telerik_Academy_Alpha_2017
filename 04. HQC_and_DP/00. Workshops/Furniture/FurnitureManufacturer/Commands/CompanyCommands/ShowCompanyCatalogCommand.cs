@@ -24,6 +24,8 @@ namespace FurnitureManufacturer.Commands.CompanyCommands
             if (!this.database.Companies.ContainsKey(companyName))
             {
                 this.database.Log(string.Format(this.constants.CompanyNotFoundErrorMessage, companyName));
+
+                return;
             }
 
             ICompany company = this.database.Companies[companyName];

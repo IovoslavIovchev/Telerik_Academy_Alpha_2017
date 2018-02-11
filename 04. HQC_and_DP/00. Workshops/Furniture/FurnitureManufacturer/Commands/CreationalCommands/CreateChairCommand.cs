@@ -26,6 +26,8 @@ namespace FurnitureManufacturer.Commands.CreationalCommands
             if (this.database.Furnitures.ContainsKey(model))
             {
                 this.database.Log(string.Format(this.constants.FurnitureExistsErrorMessage, model));
+
+                return;
             }
 
             string material = args[1];

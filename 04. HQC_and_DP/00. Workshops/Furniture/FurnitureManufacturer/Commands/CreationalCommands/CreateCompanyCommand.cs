@@ -26,6 +26,8 @@ namespace FurnitureManufacturer.Commands.CreationalCommands
             if (this.database.Companies.ContainsKey(name))
             {
                 this.database.Log(string.Format(this.constants.CompanyExistsErrorMessage, name));
+
+                return;
             }
 
             string registrationNum = args[1];
