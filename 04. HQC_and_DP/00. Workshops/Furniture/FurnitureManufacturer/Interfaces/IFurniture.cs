@@ -11,5 +11,7 @@ namespace FurnitureManufacturer.Interfaces
         decimal Price { get; }
 
         decimal Height { get; }
+
+        string ToString();
     }
 }

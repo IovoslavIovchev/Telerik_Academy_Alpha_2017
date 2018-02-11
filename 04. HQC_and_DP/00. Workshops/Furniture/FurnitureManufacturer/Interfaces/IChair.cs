@@ -1,6 +1,6 @@
 ﻿namespace FurnitureManufacturer.Interfaces
 {
-    public interface IChair
+    public interface IChair : IFurniture
     {
         int NumberOfLegs { get; }
     }

@@ -1,6 +1,6 @@
 ﻿namespace FurnitureManufacturer.Interfaces
 {
-    public interface ITable
+    public interface ITable : IFurniture
     {
         decimal Length { get; }
 
