@@ -17,18 +17,18 @@ namespace FurnitureManufacturer.Commands.CompanyCommands
             this.constants = constants;
         }
 
-        public string Execute(IList<string> args)
+        public void Execute(IList<string> args)
         {
             string companyName = args[0];
 
             if (!this.database.Companies.ContainsKey(companyName))
             {
-                return string.Format(this.constants.CompanyNotFoundErrorMessage, companyName);
+                this.database.Log(string.Format(this.constants.CompanyNotFoundErrorMessage, companyName));
             }
 
             ICompany company = this.database.Companies[companyName];
 
-            return company.Catalog();
+            this.database.Log(company.Catalog());
         }
     }
 }

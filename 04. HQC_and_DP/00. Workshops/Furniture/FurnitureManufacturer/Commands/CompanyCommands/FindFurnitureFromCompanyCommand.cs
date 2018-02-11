@@ -17,7 +17,7 @@ namespace FurnitureManufacturer.Commands.CompanyCommands
             this.constants = constants;
         }
 
-        public string Execute(IList<string> args)
+        public void Execute(IList<string> args)
         {
             string companyName = args[0];
 
@@ -25,12 +25,12 @@ namespace FurnitureManufacturer.Commands.CompanyCommands
 
             if (!this.database.Companies.ContainsKey(companyName))
             {
-                return string.Format(this.constants.CompanyNotFoundErrorMessage, companyName);
+                this.database.Log(string.Format(this.constants.CompanyNotFoundErrorMessage, companyName));
             }
 
             if (!this.database.Furnitures.ContainsKey(furnitureModel))
             {
-                return string.Format(this.constants.FurnitureNotFoundErrorMessage, furnitureModel);
+                this.database.Log(string.Format(this.constants.FurnitureNotFoundErrorMessage, furnitureModel));
             }
 
             ICompany company = this.database.Companies[companyName];
@@ -39,10 +39,10 @@ namespace FurnitureManufacturer.Commands.CompanyCommands
 
             if (!company.Furnitures.Contains(furniture))
             {
-                return string.Format(this.constants.FurnitureNotFoundErrorMessage, furnitureModel);
+                this.database.Log(string.Format(this.constants.FurnitureNotFoundErrorMessage, furnitureModel));
             }
 
-            return furniture.ToString();
+            this.database.Log(furniture.ToString());
         }
     }
 }

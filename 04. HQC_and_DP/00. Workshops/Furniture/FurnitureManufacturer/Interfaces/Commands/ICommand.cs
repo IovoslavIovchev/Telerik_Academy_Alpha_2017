@@ -4,6 +4,6 @@ namespace FurnitureManufacturer.Interfaces.Commands
 {
     public interface ICommand
     {
-        string Execute(IList<string> args);
+        void Execute(IList<string> args);
     }
 }

@@ -19,13 +19,13 @@ namespace FurnitureManufacturer.Commands.CreationalCommands
             this.constants = constants;
         }
 
-        public string Execute(IList<string> args)
+        public void Execute(IList<string> args)
         {
             string model = args[0];
 
             if (this.database.Furnitures.ContainsKey(model))
             {
-                return string.Format(this.constants.FurnitureExistsErrorMessage, model);
+                this.database.Log(string.Format(this.constants.FurnitureExistsErrorMessage, model));
             }
 
             string material = args[1];
@@ -40,7 +40,7 @@ namespace FurnitureManufacturer.Commands.CreationalCommands
 
             this.database.AddFurniture(chair);
 
-            return string.Format(this.constants.ChairCreatedSuccessMessage, model);
+            this.database.Log(string.Format(this.constants.ChairCreatedSuccessMessage, model));
         }
     }
 }

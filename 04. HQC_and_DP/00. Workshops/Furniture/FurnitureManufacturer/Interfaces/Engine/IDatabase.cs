@@ -8,8 +8,12 @@ namespace FurnitureManufacturer.Interfaces.Engine
 
         IDictionary<string, IFurniture> Furnitures { get; }
 
+        IList<string> TextLog { get; }
+
         void AddFurniture(IFurniture furniture);
 
         void AddCompany(ICompany company);
+
+        void Log(string msg);
     }
 }

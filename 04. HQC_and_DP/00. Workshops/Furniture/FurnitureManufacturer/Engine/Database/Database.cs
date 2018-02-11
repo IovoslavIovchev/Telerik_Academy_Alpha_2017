@@ -9,16 +9,20 @@ namespace FurnitureManufacturer.Engine.Database
     {
         private IDictionary<string, ICompany> companies;
         private IDictionary<string, IFurniture> furnitures;
+        private IList<string> textLog;
     
         public Database()
         {
             this.companies = new Dictionary<string, ICompany>();
             this.furnitures = new Dictionary<string, IFurniture>();
+            this.textLog = new List<string>();
         }
 
         public IDictionary<string, ICompany> Companies => this.companies;
 
         public IDictionary<string, IFurniture> Furnitures => this.furnitures;
+
+        public IList<string> TextLog => this.textLog;
 
         public void AddFurniture(IFurniture furniture)
         {
@@ -38,6 +42,16 @@ namespace FurnitureManufacturer.Engine.Database
             }
 
             this.companies.Add(company.Name, company);
+        }
+
+        public void Log(string msg)
+        {
+            if (msg == null)
+            {
+                throw new ArgumentNullException("String cannot be null");
+            }
+
+            this.textLog.Add(msg);
         }
     }
 }

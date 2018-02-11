@@ -10,40 +10,39 @@ namespace FurnitureManufacturer.Engine
     {
         private readonly ICommandParser parser;
         private readonly IRenderer renderer;
+        private readonly IDatabase database;
 
         public FurnitureEngine(
             ICommandParser parser,
-            IRenderer renderer
+            IRenderer renderer,
+            IDatabase database
         )
         {
             this.parser = parser;
             this.renderer = renderer;
+            this.database = database;
         }
 
         public void Start()
         {
-            List<string> result = new List<string>();
-
             string input;
 
             while (!String.IsNullOrEmpty(input = this.renderer.Input()))
             {
                 try
                 {
-                    string output = ProcessCommand(input);
-
-                    result.Add(output);
+                    ProcessCommand(input);
                 }
                 catch (Exception e)
                 {
-                    result.Add(e.Message);
+                    this.database.Log(e.Message);
                 }
             }
 
-            this.renderer.Output(result);
+            this.renderer.Output(this.database.TextLog);
         }
 
-        private string ProcessCommand(string input)
+        private void ProcessCommand(string input)
         {
             List<string> args = input.Split(' ').ToList();
 
@@ -52,7 +51,7 @@ namespace FurnitureManufacturer.Engine
 
             ICommand command = this.parser.ParseCommand(commandName.ToLower());
 
-            return command.Execute(commandArgs);
+            command.Execute(commandArgs);
         }
     }
 }

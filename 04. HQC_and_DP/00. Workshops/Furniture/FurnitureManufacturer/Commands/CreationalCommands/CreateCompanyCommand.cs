@@ -19,13 +19,13 @@ namespace FurnitureManufacturer.Commands.CreationalCommands
             this.constants = constants;
         }
 
-        public string Execute(IList<string> args)
+        public void Execute(IList<string> args)
         {
             string name = args[0];
 
             if (this.database.Companies.ContainsKey(name))
             {
-                return string.Format(this.constants.CompanyExistsErrorMessage, name);
+                this.database.Log(string.Format(this.constants.CompanyExistsErrorMessage, name));
             }
 
             string registrationNum = args[1];
@@ -34,7 +34,7 @@ namespace FurnitureManufacturer.Commands.CreationalCommands
 
             this.database.AddCompany(company);
 
-            return string.Format(this.constants.CompanyCreatedSuccessMessage, name);
+            this.database.Log(string.Format(this.constants.CompanyCreatedSuccessMessage, name));
         }
     }
 }
