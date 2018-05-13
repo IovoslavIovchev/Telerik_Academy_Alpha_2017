@@ -4,56 +4,86 @@ using System.Text;
 
 namespace Spread_the_Knight
 {
+    class Konsole
+    {
+        private static string[] arr = @"6
+7
+3
+4".Split("\n");
+        private static int i = 0;
+
+        public static string ReadLine(){
+            return arr[i++];
+        }
+
+        public static void Write(string str)
+        {
+            Console.Write(str);
+        }
+    }
     class StartUp
     {
-        private static long[,] chessboard;
+        private static int C;
 
-        private static bool[,] visited;
+        private static long [, ] chessboard;
 
-        private static int[] X = { -2, 2, -2, 2, -1, 1, -1, 1 };
-
-        private static int[] Y = { -1, -1, 1, 1, -2, -2, 2, 2 };
-
-        private static Queue<Data> q;
+        private static Queue<int []> q;
 
         private static void InitializeChessboard()
         {
-            int N = int.Parse(Console.ReadLine());
-            int M = int.Parse(Console.ReadLine());
+            int N = int.Parse(Konsole.ReadLine());
+            int M = int.Parse(Konsole.ReadLine());
 
-            chessboard = new long[N, M];
-            visited = new bool[N, M];
-            q = new Queue<Data>();
+            chessboard = new long [N, M];
+            q = new Queue<int []>();
+            C = 0;
         }
 
         private static bool IsValid(int r, int c)
         {
-            return r > -1 && c > -1 && r < chessboard.GetLength(0) && c < chessboard.GetLength(1) && !visited[r, c];
+            return r > -1 && c > -1 && r < chessboard.GetLength(0) && c < chessboard.GetLength(1) && chessboard [r, c] == 0;
         }
 
         private static void BFS()
         {
-            int R = int.Parse(Console.ReadLine());
-            int C = int.Parse(Console.ReadLine());
+            int r = int.Parse(Konsole.ReadLine());
+            int c = int.Parse(Konsole.ReadLine());
 
-            q.Enqueue(new Data(R, C, 1));
+            q.Enqueue(new int [] { r, c, 1 });
 
             while (q.Count != 0)
             {
-                Data temp = q.Dequeue();
-                if (IsValid(temp.R, temp.C))
+                int [] temp = q.Dequeue();
+                if (IsValid(temp [0], temp [1]))
                 {
-                    if (temp.C == chessboard.GetLength(1) / 2)
-                    chessboard[temp.R, temp.C] = temp.Value;
-                    visited[temp.R, temp.C] = true;
+                    chessboard [temp [0], temp [1]] = temp [2];
 
-                    for (int i = 0; i < 8; i++)
+                    if (temp [1] == chessboard.GetLength(1) / 2)
                     {
-                        if (IsValid(temp.R + X[i], temp.C + Y[i]))
+                        C++;
+
+                        if (C == chessboard.GetLength(0))
                         {
-                            q.Enqueue(new Data(temp.R + X[i], temp.C + Y[i], temp.Value + 1));
+                            return;
                         }
                     }
+
+                    if (IsValid(temp [0] - 2, temp [1] - 1))
+                        q.Enqueue(new int [] { temp [0] - 2, temp [1] - 1, temp [2] + 1 });
+                    if (IsValid(temp [0] + 2, temp [1] - 1))
+                        q.Enqueue(new int [] { temp [0] + 2, temp [1] - 1, temp [2] + 1 });
+                    if (IsValid(temp [0] - 2, temp [1] + 1))
+                        q.Enqueue(new int [] { temp [0] - 2, temp [1] + 1, temp [2] + 1 });
+                    if (IsValid(temp [0] + 2, temp [1] + 1))
+                        q.Enqueue(new int [] { temp [0] + 2, temp [1] + 1, temp [2] + 1 });
+                    if (IsValid(temp [0] - 1, temp [1] - 2))
+                        q.Enqueue(new int [] { temp [0] - 1, temp [1] - 2, temp [2] + 1 });
+                    if (IsValid(temp [0] + 1, temp [1] - 2))
+                        q.Enqueue(new int [] { temp [0] + 1, temp [1] - 2, temp [2] + 1 });
+                    if (IsValid(temp [0] - 1, temp [1] + 2))
+                        q.Enqueue(new int [] { temp [0] - 1, temp [1] + 2, temp [2] + 1 });
+                    if (IsValid(temp [0] + 1, temp [1] + 2))
+                        q.Enqueue(new int [] { temp [0] + 1, temp [1] + 2, temp [2] + 1 });
                 }
             }
         }
@@ -68,7 +98,7 @@ namespace Spread_the_Knight
                 result.AppendLine(chessboard[i, mid].ToString());
             }
 
-            Console.Write(result.ToString());
+            Konsole.Write(result.ToString());
         }
 
         public static void Main()
@@ -79,21 +109,5 @@ namespace Spread_the_Knight
 
             PrintResult();
         }
-    }
-
-    struct Data
-    {
-        public Data(int r, int c, int value)
-        {
-            R = r;
-            C = c;
-            Value = value;
-        }
-
-        public int R { get; set; }
-
-        public int C { get; set; }
-
-        public int Value { get; set; }
     }
 }

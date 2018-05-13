@@ -11,7 +11,6 @@ namespace Range_Exceptions
 
         public InvalidRangeException(string message) : base(message)
         {
-
         }
     }
 }
