@@ -6,7 +6,7 @@ This Repository contains all the `excercises`, `exams` & `workshops`, separated 
 
 | Topic | Project |
 |:-----:|:-------:|
-|  OPP  |[projectSyph](https://github.com/projectSyph/projectSyph)|
+|  OOP  |[projectSyph](https://github.com/projectSyph/projectSyph)|
 |  HQC  |[projectSypth](https://github.com/projectSyph/projectSyph/tree/Syph_Remastered_SV_Branch)|
 |  Front-End  |[AutoRepShop](https://github.com/AutoRepShop/AutoRepShop)|
 |Databases & SQL|[HatchlingCompanyDB](https://github.com/TheHandsomeDucks/HatchlingCompanyDB)|
