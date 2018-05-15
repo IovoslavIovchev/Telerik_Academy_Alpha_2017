@@ -14,10 +14,10 @@ namespace Fill_the_Matrix
 
             switch (Char.ToLower(ch))
             {
-                case 'a': A(matrix, ref N); break;
-                case 'b': B(matrix, ref N); break;
-                case 'c': C(matrix, ref N); break;
-                case 'd': D(matrix, ref N); break;
+                case 'a': CaseA(matrix, ref N); break;
+                case 'b': CaseB(matrix, ref N); break;
+                case 'c': CaseC(matrix, ref N); break;
+                case 'd': CaseD(matrix, ref N); break;
             }
 
             for (int i = 0; i < N; i++)
@@ -26,7 +26,7 @@ namespace Fill_the_Matrix
             }
         }
 
-        static void A(int[][] m, ref int N)
+        static void CaseA(int[][] m, ref int N)
         {
             for (int j = 0; j < N; j++)
             {
@@ -37,7 +37,7 @@ namespace Fill_the_Matrix
             }
         }
 
-        static void B(int[][] m, ref int N)
+        static void CaseB(int[][] m, ref int N)
         {
             for (int j = 0; j < N; j++)
             {
@@ -61,7 +61,7 @@ namespace Fill_the_Matrix
             }
         }
 
-        static void C(int[][] m, ref int N)
+        static void CaseC(int[][] m, ref int N)
         {
             int c = 1;
 
@@ -85,7 +85,7 @@ namespace Fill_the_Matrix
             }
         }
 
-        static void D(int[][] m, ref int N)
+        static void CaseD(int[][] m, ref int N)
         {
             int x = 0, y = 0;
             int c = 1;

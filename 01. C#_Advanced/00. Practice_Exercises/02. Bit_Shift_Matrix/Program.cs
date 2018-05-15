@@ -12,7 +12,8 @@ namespace Bit_Shift_Matrix
         static void Main(string[] args)
         {
             ushort a = ushort.Parse(Console.ReadLine()),
-                   b = ushort.Parse(Console.ReadLine()), COEFF = Math.Max(a, b);
+                   b = ushort.Parse(Console.ReadLine()), 
+                   COEFF = Math.Max(a, b);
 
             m = new BigInteger[a, b];
 
